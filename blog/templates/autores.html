@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+	<h1>Autores del blog</h1>
+	<form action="{% url 'autores' %}" method="post">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" name="Guardar">
+	</form>
+	<ul>
+		{% for autor in autores%}
+			<li>{{autor}}</li>
+		{% endfor %}
+{% endblock %}
+{% block footer %}
+holi
+{% endblock %}
+</body>
+</html>

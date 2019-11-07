@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Registro</title>
+	<style>
+		.elegido {
+			background:yellow;
+		}
+	</style>
+</head>
+<body>
+	{% block content %}
+	<h1>Entradas del blog</h1>
+	<form action="{% url 'registro' %}" method="post">
+		{% csrf_token %}
+		{{form}}
+		<input type="submit" name="Guardar">
+	</form>
+	<ul>
+		{% for num in figuras%}
+			<li>{{num.num_figura}}</li>
+		{% endfor %}
+	</ul>
+	<table border="1">
+		<tr>
+	{% for i in range %}
+
+		{% if i|divisibleby:'20' %}
+		</tr><tr>
+		{% endif %}
+
+		{% for num in figuras %}
+			{% if i == num.num_figura %}
+			 <td class="elegido">{{i}}</td>
+			 {% else  %}
+			 <td>{{i}}</td>
+			{% endif %}
+		{% endfor %}
+	{% endfor %}
+		</tr>
+	</table>
+	{% endblock %}
+
+</html>
